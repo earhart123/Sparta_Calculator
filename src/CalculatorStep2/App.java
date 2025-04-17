@@ -27,6 +27,7 @@ public class App {
                 System.out.print("두 번째 정수를 입력하세요: ");
                 String b = scanner.next();
 
+
                 if (checkInt(a) && checkInt(b)) {
                     calcul.val1 = Integer.parseInt(a);
                     calcul.val2 = Integer.parseInt(b);
@@ -49,7 +50,6 @@ public class App {
 
             calcul.calResult(calcul.val1, calcul.val2, calcul.e);
 
-            System.out.println("결과: " + calcul.result);
             System.out.print("계속하려면 아무 글자 입력, 종료하려면 exit 입력: ");
             scanner.nextLine();
             String exit = scanner.nextLine();
