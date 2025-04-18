@@ -33,7 +33,6 @@ public class Calculator {
         return Integer.parseInt(a);
     }
 
-    //사칙연산 c가 4개중 하나라는 확인 후에 진행
     public void calResult (int a, int b, char c) throws IllegalArgumentException, ArithmeticException{
         double result;
 
