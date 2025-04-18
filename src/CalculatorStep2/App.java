@@ -37,11 +37,12 @@ public class App {
                 continue;
             }
 
-            System.out.println("결과: "+cal.getResult());
+            System.out.println("결과: "+cal.getResult().get(0));
 
             System.out.print("계속하려면 아무 글자 입력, 종료하려면 exit 입력: ");
             scanner.nextLine();
             String exit = scanner.nextLine();
+            cal.removeResult();
 
             if(exit.equals("exit")){
                 System.out.println("=======계산기 종료=======");
