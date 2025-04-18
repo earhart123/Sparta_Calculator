@@ -1,5 +1,6 @@
 package CalculatorStep2;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,14 @@ public class Calculator {
 
     //기능(method)
     //사칙연산 c가 4개중 하나라는 확인 후에 진행
-    public void calResult (int a, int b, char c){
+    public void calResult (int a, int b, char c) throws IOException, ArithmeticException{
+        if(!(c=='+' || c=='-' || c=='x' || c=='/')){
+            throw new IOException("올바른 입력값이 아닙니다.");
+        }
+        if(b==0 && c == '/'){
+            throw new ArithmeticException ("0으로 나눌 수 없습니다");
+        }
+
         switch (c) {
             case '+':
                 this.result = a + b;
@@ -42,21 +50,15 @@ public class Calculator {
         }
     }
 
-    public boolean checkSymbol (char c){
+    public void checkSymbol (char c) throws IOException{
         if(c=='+' || c=='-' || c=='x' || c=='/'){
-            return true;
-        }else{
-            System.out.println("※ 올바른 사칙 연산이 입력되지 않았습니다.");
-            return false;
+            throw new IOException("올바른 입력값이 아닙니다.");
         }
     }
 
-    public boolean checkZero (int b, char c){
+    public void checkZero (int b, char c) throws ArithmeticException  {
         if(b==0 && c == '/'){
-            System.out.println("※ 0으로 나눌 수 없습니다. 다른 연산을 입력해주세요.");
-            return false;
-        }else{
-            return true;
+            throw new ArithmeticException ("0으로 나눌 수 없습니다");
         }
     }
 

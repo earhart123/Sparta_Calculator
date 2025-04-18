@@ -1,5 +1,6 @@
 package CalculatorStep2;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
@@ -42,13 +43,17 @@ public class App {
             boolean calStatus = true;
 
             //사칙 연산 입력 받기
-            do {
+            try{
                 System.out.print("사칙 연산을 입력하세요 (+, -, x, /): ");
                 calcul.e = scanner.next().charAt(0);
-
-            } while (!(calcul.checkSymbol(calcul.e)&&calcul.checkZero(calcul.val2, calcul.e)));
-
-            calcul.calResult(calcul.val1, calcul.val2, calcul.e);
+                calcul.calResult(calcul.val1, calcul.val2, calcul.e);
+            }catch (IOException e){
+                System.out.println("※ 올바른 사칙 연산이 입력되지 않았습니다.");
+                continue;
+            }catch (ArithmeticException  e){
+                System.out.println("※ 0으로 나눌 수 없습니다. 다른 연산을 입력해주세요.");
+                continue;
+            }
 
             System.out.print("계속하려면 아무 글자 입력, 종료하려면 exit 입력: ");
             scanner.nextLine();
