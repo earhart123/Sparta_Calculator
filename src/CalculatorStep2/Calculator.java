@@ -17,6 +17,16 @@ public class Calculator {
 
 
     //기능(method)
+    public int checkInt (String a) throws IOException{
+        for (int i = 0; i < a.length(); i++) {
+            char temp = a.charAt(i);
+            if (!Character.isDigit(temp)) {
+                throw new IOException("올바른 입력값이 아닙니다.");
+            }
+        }
+        return Integer.parseInt(a);
+    }
+
     //사칙연산 c가 4개중 하나라는 확인 후에 진행
     public void calResult (int a, int b, char c) throws IOException, ArithmeticException{
         if(!(c=='+' || c=='-' || c=='x' || c=='/')){

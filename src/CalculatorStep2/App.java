@@ -21,21 +21,18 @@ public class App {
         while(true) {
             Calculator calcul = new Calculator();
 
-            while(true) {
-                //정수 2개 입력 받기
+            //정수 입력 받기
+            try{
                 System.out.print("첫 번째 정수를 입력하세요: ");
                 String a = scanner.next();
                 System.out.print("두 번째 정수를 입력하세요: ");
                 String b = scanner.next();
 
-
-                if (checkInt(a) && checkInt(b)) {
-                    calcul.val1 = Integer.parseInt(a);
-                    calcul.val2 = Integer.parseInt(b);
-                    break;
-                }
-
+                calcul.val1 = calcul.checkInt(a);
+                calcul.val2 = calcul.checkInt(b);
+            }catch (IOException e){
                 System.out.println("※ 올바른 정수를 입력해주세요.\n=============");
+                continue;
             }
 
 
