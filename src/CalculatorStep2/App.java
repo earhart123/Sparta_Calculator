@@ -22,6 +22,9 @@ public class App {
 
                 cal = new Calculator(a, b, e);
 
+                //결과 리스트에 가장 먼저 들어간 결과를 가져오지만, 계산이 끝나면 지워지기 때문에 결과 리스트에는 하나의 결과만 저장되는 상태
+                System.out.println("결과: " + cal.getResult().get(0));
+
             } catch (IOException e) {
                 System.out.println("※ 올바른 정수를 입력해주세요.\n=============");
                 continue;
@@ -35,7 +38,7 @@ public class App {
 
 
             //결과 리스트에 가장 먼저 들어간 결과를 가져오지만, 계산이 끝나면 지워지기 때문에 결과 리스트에는 하나의 결과만 저장되는 상태
-            System.out.println("결과: " + cal.getResult().get(0));
+            //System.out.println("결과: " + cal.getResult().get(0));
 
             System.out.print("계속하려면 아무 글자 입력, 종료하려면 exit 입력: ");
             scanner.nextLine();

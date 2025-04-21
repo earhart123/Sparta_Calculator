@@ -6,24 +6,33 @@ import java.util.List;
 
 public class Calculator {
     //속성
-    int val1;
-    int val2;
+    private int val1;
+    private int val2;
     private char e;
-    private final List<Double> resultList = new ArrayList<Double>();
+    private List<Double> resultList = new ArrayList<Double>();
 
 
     //생성자
+    public Calculator(String a, String b, char e) throws IOException {
+        this.val1 = checkInt(a);
+        this.val2 = checkInt(b);
+        this.e = e;
+    }
+
+
 
     //기능(method)
+
     public List<Double> getResult() {
+        calResult();
         return resultList;
     }
 
-    public void addResult(double result) {
+    private void addResult(double result) {
         resultList.add(result);
     }
 
-    public int checkInt (String a) throws IOException{
+    private int checkInt (String a) throws IOException{
         for (int i = 0; i < a.length(); i++) {
             char temp = a.charAt(i);
             if (!Character.isDigit(temp)) {
@@ -33,22 +42,22 @@ public class Calculator {
         return Integer.parseInt(a);
     }
 
-    public void calResult (int a, int b, char c) throws IllegalArgumentException, ArithmeticException{
+    private void calResult () throws IllegalArgumentException, ArithmeticException{
         double result;
 
-        switch (c) {
+        switch (this.e) {
             case '+':
-                result = a + b;
+                result = this.val1 + this.val2;
                 break;
             case '-':
-                result = a - b;
+                result = this.val1 - this.val2;
                 break;
             case 'x':
-                result = a * b;
+                result = this.val1 * this.val2;
                 break;
             case '/':
-                if(b==0) throw new ArithmeticException ("0으로 나눌 수 없습니다");
-                result = (double) a / (double) b;
+                if(this.val2==0) throw new ArithmeticException ("0으로 나눌 수 없습니다");
+                result = (double) this.val1 / (double) this.val2;
                 break;
             default :
                 throw new IllegalArgumentException("잘못된 연산자입니다");
