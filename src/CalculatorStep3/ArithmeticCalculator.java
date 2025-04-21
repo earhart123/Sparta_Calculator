@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator {
+public class ArithmeticCalculator  {
     //속성
     private int val1;
     private int val2;
@@ -13,7 +13,7 @@ public class Calculator {
 
 
     //생성자
-    public Calculator(String a, String b, char e) throws IOException {
+    public ArithmeticCalculator (String a, String b, char e) throws IOException {
         this.val1 = checkInt(a);
         this.val2 = checkInt(b);
         this.e = e;
@@ -42,11 +42,12 @@ public class Calculator {
         return Integer.parseInt(a);
     }
 
-    private void calResult () throws IllegalArgumentException, ArithmeticException{
+    private void calResult (OperatorType e) throws IllegalArgumentException, ArithmeticException{
         double result;
+        OperatorType o = OperatorType.valueOf(e);
 
-        switch (this.e) {
-            case '+':
+        switch (o) {
+            case "+":
                 result = this.val1 + this.val2;
                 break;
             case '-':

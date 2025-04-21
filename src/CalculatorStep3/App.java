@@ -1,6 +1,6 @@
 package CalculatorStep3;
 
-import CalculatorStep3.Calculator;
+import CalculatorStep3.ArithmeticCalculator ;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ public class App {
 
         while (true) {
             //정수 입력 받기
-            CalculatorStep3.Calculator cal;
+            CalculatorStep3.ArithmeticCalculator  cal;
             try {
                 System.out.print("첫 번째 정수를 입력하세요: ");
                 String a = scanner.next();
@@ -22,7 +22,7 @@ public class App {
                 char e = scanner.next().charAt(0);
 
 
-                cal = new Calculator(a, b, e);
+                cal = new ArithmeticCalculator (a, b, e);
 
             } catch (IOException e) {
                 System.out.println("※ 올바른 정수를 입력해주세요.\n=============");
