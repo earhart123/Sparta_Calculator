@@ -4,27 +4,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArithmeticCalculator  {
+public class ArithmeticCalculator<T extends Number>  {
     //속성
-    private int val1;
-    private int val2;
+    private T val1;
+    private T val2;
     private char e;
     private List<Double> resultList = new ArrayList<Double>();
 
 
     //생성자
-    public ArithmeticCalculator (String a, String b, char e) throws IOException {
-        this.val1 = checkInt(a);
-        this.val2 = checkInt(b);
-        this.e = e;
+    public ArithmeticCalculator() {
+    }
+
+    public ArithmeticCalculator (T a, T b) throws IOException {
+        this.val1 = a;
+        this.val2 = b;
     }
 
 
 
     //기능(method)
-
+    public void setOperate(char e){
+        this.e = e;
+    }
     public List<Double> getResult() {
-        calResult();
+        double result = calResult(e);
+        addResult(calResult(this.e));
         return resultList;
     }
 
@@ -32,41 +37,22 @@ public class ArithmeticCalculator  {
         resultList.add(result);
     }
 
-    private int checkInt (String a) throws IOException{
-        for (int i = 0; i < a.length(); i++) {
-            char temp = a.charAt(i);
-            if (!Character.isDigit(temp)) {
-                throw new IOException("올바른 입력값이 아닙니다.");
-            }
-        }
-        return Integer.parseInt(a);
-    }
-
-    private void calResult (OperatorType e) throws IllegalArgumentException, ArithmeticException{
-        double result;
-        OperatorType o = OperatorType.valueOf(e);
-
-        switch (o) {
-            case "+":
-                result = this.val1 + this.val2;
-                break;
-            case '-':
-                result = this.val1 - this.val2;
-                break;
-            case 'x':
-                result = this.val1 * this.val2;
-                break;
-            case '/':
-                if(this.val2==0) throw new ArithmeticException ("0으로 나눌 수 없습니다");
-                result = (double) this.val1 / (double) this.val2;
-                break;
-            default :
-                throw new IllegalArgumentException("잘못된 연산자입니다");
-        }
-        addResult(result);
+    private double calResult (char e) throws IllegalArgumentException, ArithmeticException{
+        OperatorType op = OperatorType.matchChar(e);
+        return op.calculate(val1.doubleValue(), val2.doubleValue());
     }
 
     public void removeResult(){
         resultList.remove(0);
+    }
+
+    // 입력받은 숫자 필터링
+    public Number filterNum(String num) throws IOException{
+        if(num.contains(".")){
+            return Double.parseDouble(num);
+        }else{
+            return Integer.parseInt(num);
+        }
+        //throw new IOException ("숫자가 아닙니다.");
     }
 }

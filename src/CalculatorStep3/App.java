@@ -11,18 +11,24 @@ public class App {
 
         while (true) {
             //정수 입력 받기
-            CalculatorStep3.ArithmeticCalculator  cal;
+            ArithmeticCalculator<Double> cal = new ArithmeticCalculator();
             try {
                 System.out.print("첫 번째 정수를 입력하세요: ");
                 String a = scanner.next();
+                Number val1 = cal.filterNum(a);
                 System.out.print("두 번째 정수를 입력하세요: ");
                 String b = scanner.next();
+                Number val2 = cal.filterNum(b);
+
+                cal = new ArithmeticCalculator (val1, val2);
 
                 System.out.print("사칙 연산을 입력하세요 (+, -, x, /): ");
                 char e = scanner.next().charAt(0);
+                cal.setOperate(e);
 
 
-                cal = new ArithmeticCalculator (a, b, e);
+                //결과 리스트에 가장 먼저 들어간 결과를 가져오지만, 계산이 끝나면 지워지기 때문에 결과 리스트에는 하나의 결과만 저장되는 상태
+                System.out.println("결과: " + cal.getResult().get(0));
 
             } catch (IOException e) {
                 System.out.println("※ 올바른 정수를 입력해주세요.\n=============");
@@ -35,9 +41,6 @@ public class App {
                 continue;
             }
 
-
-            //결과 리스트에 가장 먼저 들어간 결과를 가져오지만, 계산이 끝나면 지워지기 때문에 결과 리스트에는 하나의 결과만 저장되는 상태
-            System.out.println("결과: " + cal.getResult().get(0));
 
             System.out.print("계속하려면 아무 글자 입력, 종료하려면 exit 입력: ");
             scanner.nextLine();
