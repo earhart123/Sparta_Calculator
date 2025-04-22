@@ -16,7 +16,9 @@ public class ArithmeticCalculator<T extends Number>  {
     public ArithmeticCalculator() {
     }
 
-    public ArithmeticCalculator (T a, T b) throws IOException {
+    public ArithmeticCalculator (T a, T b)
+            //throws IOException
+    {
         this.val1 = a;
         this.val2 = b;
     }
@@ -47,12 +49,11 @@ public class ArithmeticCalculator<T extends Number>  {
     }
 
     // 입력받은 숫자 필터링
-    public Number filterNum(String num) throws IOException{
+    public Number filterNum(String num) throws NumberFormatException {
         if(num.contains(".")){
             return Double.parseDouble(num);
         }else{
             return Integer.parseInt(num);
         }
-        //throw new IOException ("숫자가 아닙니다.");
     }
 }
