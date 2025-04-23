@@ -1,6 +1,5 @@
 package CalculatorStep3;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +15,10 @@ public class ArithmeticCalculator<T extends Number>  {
     public ArithmeticCalculator() {
     }
 
-    public ArithmeticCalculator (T a, T b)
-            //throws IOException
-    {
+    public ArithmeticCalculator (T a, T b) {
         this.val1 = a;
         this.val2 = b;
     }
-
 
 
     //기능(method)
@@ -31,7 +27,7 @@ public class ArithmeticCalculator<T extends Number>  {
     }
     public List<Double> getResult() {
         double result = calResult(e);
-        addResult(calResult(this.e));
+        addResult(result);
         return resultList;
     }
 
