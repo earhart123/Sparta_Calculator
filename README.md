@@ -88,3 +88,22 @@ Java 문법을 사용하여 간단한 사칙연산을 할 수 있는 계산기�
 
 --------------------
 #### CalculatorStep3 계산기
+![image](https://github.com/user-attachments/assets/a5803d56-16d2-4c40-b0e5-177da7dca045)
+
+올바른 정수를 입력하지 않았을 때
+
+![image](https://github.com/user-attachments/assets/3eba013e-140f-4c84-b94b-38337f63fbf2)
+
+올바른 사칙연산을 입력하지 않았을 때
+
+![image](https://github.com/user-attachments/assets/5be57f80-ef2c-46fa-89d6-4a2ea1837a12)
+
+올바른 정수, 올바른 사칙연산을 입력했을 때
+
+![image](https://github.com/user-attachments/assets/d5058df6-b9d0-48bc-b5f8-ad1f992e115a)
+
+0으로 나눗셈 시도할 때
+
+![image](https://github.com/user-attachments/assets/740bbda5-a87c-44b2-95f7-105f121be734)
+
+계산기 종료
