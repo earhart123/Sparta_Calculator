@@ -4,16 +4,16 @@ import java.util.function.DoubleBinaryOperator;
 public enum OperatorType {
     PLUS('+', (x, y) -> x + y),
     MINUS('-', (x, y) -> x - y),
-    MULTI('x', (x, y) -> x * y),
+    MULTI('*', (x, y) -> x * y),
     DIVIDE('/', (x, y) -> {
         if (y == 0) throw new ArithmeticException("0으로 나눌 수 없습니다");
         return x / y;
     });
 
-    private DoubleBinaryOperator op;
+    private final DoubleBinaryOperator op;
 
     //필드와 생성자
-    private char operator;
+    private final char operator;
 
     OperatorType(char operator, DoubleBinaryOperator op) {
         this.operator = operator;
